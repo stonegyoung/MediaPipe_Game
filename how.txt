@@ -1,0 +1,19 @@
+git clone
+
+<가상 환경 생성(안해도 됨)>
+터미널창(cmd)에서 
+python -m venv mp
+mp\Scripts\activate
+
+<필요 라이브러리 설치>
+pip intsall –r requirements.txt
+
+cmd에서 ipconfig 명령어 입력 후
+IPv4 주소 복사
+http://[복사한 ip주소]:8788
+
+server 폴더: 사진 저장(하나의 게임 당 한 장 저장)
+access_log.txt: 로그 저장 파일
+requirements.txt: 필요 라이브러리 정의
+make_character.py: 해님달님 클래스 정의
+server.py: 서버 코드(이것을 실행시키면 작동 됩니다)
