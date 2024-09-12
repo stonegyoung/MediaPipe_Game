@@ -1,0 +1,10 @@
+<tigerhand.py>
+z 값이 0.05 이상 앞으로 갔다가 뒤로 빠지면 'Left' / 'Right' / ''
+
+<massage.py>
+두 손 모두가 주먹 -> 보면 cnt += 1
+
+<tether.py>
+왼손 오른손이 화면 상의 빨간 점 이상으로 올라갔다가 화면 절반 아래로 내려오면 cnt += 1
+양 손 반복해야 count 됨
+print로 left, right 출력
