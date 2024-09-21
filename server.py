@@ -155,9 +155,9 @@ async def tether1(file:UploadFile):
     if result.pose_landmarks:
         left_y = result.pose_landmarks.landmark[mp_pose.PoseLandmark.LEFT_INDEX].y * height
         right_y = result.pose_landmarks.landmark[mp_pose.PoseLandmark.RIGHT_INDEX].y * height 
-        if  left_y < 200:
+        if  left_y < 300:
             sun.tt_left_state = True
-        if right_y < 200:
+        if right_y < 300:
             sun.tt_right_state = True
             
         # 화면 절반까지 내려오면
@@ -277,9 +277,9 @@ async def tether2(file:UploadFile):
     if result.pose_landmarks:
         left_y = result.pose_landmarks.landmark[mp_pose.PoseLandmark.LEFT_INDEX].y * height
         right_y = result.pose_landmarks.landmark[mp_pose.PoseLandmark.RIGHT_INDEX].y * height 
-        if  left_y < 200:
+        if  left_y < 300:
             moon.tt_left_state = True
-        if right_y < 200:
+        if right_y < 300:
             moon.tt_right_state = True
             
         # 화면 절반까지 내려오면
