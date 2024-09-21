@@ -1,8 +1,6 @@
 import cv2
-import numpy as np
 from mediapipe.python.solutions import drawing_utils as mp_drawing
 from mediapipe.python.solutions import pose as mp_pose
-from mediapipe.python.solutions import hands as mp_hands
 from mediapipe.python.solutions import drawing_styles as mp_drawing_styles
 import mediapipe as mp
 from uuid import uuid4
@@ -35,7 +33,7 @@ while cap.isOpened():
     # 결과 33개 좌표 값
     result = pose.process(img_rgb) # rgb로 넣어줘야 한다 
 
-    cv2.circle(img, (640,150), 10, (0,0,255), -1)
+    cv2.circle(img, (640,200), 10, (0,0,255), -1)
     
     # 인식이 됐으면
     if result.pose_landmarks:
@@ -47,9 +45,9 @@ while cap.isOpened():
         )
         left_y = result.pose_landmarks.landmark[mp_pose.PoseLandmark.LEFT_INDEX].y * height
         right_y = result.pose_landmarks.landmark[mp_pose.PoseLandmark.RIGHT_INDEX].y * height 
-        if  left_y < 200:
+        if  left_y < 300:
             left_state = True
-        if right_y < 200:
+        if right_y < 300:
             right_state = True
             
         # 화면 절반까지 내려오면
