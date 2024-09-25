@@ -45,23 +45,24 @@ while cap.isOpened():
     
             # 9번 좌표의 z 값이 가까워지면(더 큰 음수일수록 카메라에 더 가까이 위치)
             if hand_lr.classification[0].label == 'Left':
-                hand_z = np.abs(np.round(hand_landmarks.landmark[mp_hands.HandLandmark.MIDDLE_FINGER_MCP].z, 5))
+                hand_z = np.abs(np.round(hand_landmarks.landmark[mp_hands.HandLandmark.MIDDLE_FINGER_MCP].z, 5)*1000)
+                
                 cv2.putText(img, str(hand_z), (0,100), cv2.FONT_HERSHEY_SIMPLEX, 1, (0,255,0), 2)
                 
-                if hand_z > 0.05:
+                if hand_z > 100:
                     left_state = True
-                else:
+                elif hand_z < 50:
                     if left_state == True:
                         cv2.putText(img, 'LEFT', (600,100), cv2.FONT_HERSHEY_SIMPLEX, 3, (255,0,0), 5)
                         left_state = False
                     
             # 9번 좌표의 z 값이 가까워지면
             if hand_lr.classification[0].label == 'Right':
-                hand_z = np.abs(np.round(hand_landmarks.landmark[mp_hands.HandLandmark.MIDDLE_FINGER_MCP].z, 5))
+                hand_z = np.abs(np.round(hand_landmarks.landmark[mp_hands.HandLandmark.MIDDLE_FINGER_MCP].z, 5)*1000)
                 cv2.putText(img, str(hand_z), (1080,100), cv2.FONT_HERSHEY_SIMPLEX, 1, (0,255,0), 2)
-                if hand_z > 0.05:
+                if hand_z > 100:
                     right_state = True
-                else:
+                elif hand_z < 50:
                     if right_state == True:
                         cv2.putText(img, 'RIGHT', (600,100), cv2.FONT_HERSHEY_SIMPLEX, 3, (255,0,0), 5)
                         right_state = False
@@ -76,5 +77,3 @@ while cap.isOpened():
     
 cap.release()
 cv2.destroyAllWindows()
-    
-    
