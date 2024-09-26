@@ -77,7 +77,7 @@ async def tiger_hand1(file:UploadFile):
                 # 가까워지면
                 if hand_z > 0.11:
                     sun.th_left_state = True
-                elif hand_z < 0.04:
+                elif hand_z < 0.05:
                     # 가까워졌다가 멀어 지면
                     if sun.th_left_state == True:
                         sun.th_left_state = False
@@ -90,7 +90,7 @@ async def tiger_hand1(file:UploadFile):
                 hand_z = np.abs(np.round(hand_landmarks.landmark[mp_hands.HandLandmark.MIDDLE_FINGER_MCP].z, 5))
                 if hand_z > 0.11:
                     sun.th_right_state = True
-                elif hand_z < 0.04:
+                elif hand_z < 0.05:
                     if sun.th_right_state == True:
                         sun.th_right_state = False
                         print('tiger_hand1: right')
@@ -202,7 +202,7 @@ async def tiger_hand2(file:UploadFile):
                 # 가까워지면
                 if hand_z > 0.11:
                     moon.th_left_state = True
-                elif hand_z < 0.04:
+                elif hand_z < 0.05:
                     # 가까워졌다가 멀어 지면
                     if moon.th_left_state == True:
                         moon.th_left_state = False
@@ -215,7 +215,7 @@ async def tiger_hand2(file:UploadFile):
                 hand_z = np.abs(np.round(hand_landmarks.landmark[mp_hands.HandLandmark.MIDDLE_FINGER_MCP].z, 5))
                 if hand_z > 0.11:
                     moon.th_right_state = True
-                elif hand_z < 0.04:
+                elif hand_z < 0.05:
                     if moon.th_right_state == True:
                         moon.th_right_state = False
                         print('right')
