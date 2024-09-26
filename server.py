@@ -75,7 +75,7 @@ async def tiger_hand1(file:UploadFile):
                 hand_z = np.abs(np.round(hand_landmarks.landmark[mp_hands.HandLandmark.MIDDLE_FINGER_MCP].z, 5))
                 
                 # 가까워지면
-                if hand_z > 0.1:
+                if hand_z > 0.11:
                     sun.th_left_state = True
                 elif hand_z < 0.05:
                     # 가까워졌다가 멀어 지면
@@ -88,7 +88,7 @@ async def tiger_hand1(file:UploadFile):
             # 9번 좌표의 z 값이 가까워지면
             if hand_lr.classification[0].label == 'Right':
                 hand_z = np.abs(np.round(hand_landmarks.landmark[mp_hands.HandLandmark.MIDDLE_FINGER_MCP].z, 5))
-                if hand_z > 0.1:
+                if hand_z > 0.11:
                     sun.th_right_state = True
                 elif hand_z < 0.05:
                     if sun.th_right_state == True:
@@ -200,7 +200,7 @@ async def tiger_hand2(file:UploadFile):
                 hand_z = np.abs(np.round(hand_landmarks.landmark[mp_hands.HandLandmark.MIDDLE_FINGER_MCP].z, 5))
                 
                 # 가까워지면
-                if hand_z > 0.1:
+                if hand_z > 0.11:
                     moon.th_left_state = True
                 elif hand_z < 0.05:
                     # 가까워졌다가 멀어 지면
@@ -213,7 +213,7 @@ async def tiger_hand2(file:UploadFile):
             # 9번 좌표의 z 값이 가까워지면
             if hand_lr.classification[0].label == 'Right':
                 hand_z = np.abs(np.round(hand_landmarks.landmark[mp_hands.HandLandmark.MIDDLE_FINGER_MCP].z, 5))
-                if hand_z > 0.1:
+                if hand_z > 0.11:
                     moon.th_right_state = True
                 elif hand_z < 0.05:
                     if moon.th_right_state == True:

@@ -20,11 +20,12 @@ cap.set(cv2.CAP_PROP_FRAME_HEIGHT, height)
 while cap.isOpened():
     ret, img = cap.read()
     
+    if not ret:
+        break
+    
     img = cv2.flip(img, 1) # 좌우 반전
     img_original = img.copy()
     
-    if not ret:
-        break
     
     img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB) # mediapipe에서 읽기 위해 rgb로 바꾼다
     
@@ -49,9 +50,9 @@ while cap.isOpened():
                 
                 cv2.putText(img, str(hand_z), (0,100), cv2.FONT_HERSHEY_SIMPLEX, 1, (0,255,0), 2)
                 
-                if hand_z > 100:
+                if hand_z > 110:
                     left_state = True
-                elif hand_z < 50:
+                elif hand_z < 40:
                     if left_state == True:
                         cv2.putText(img, 'LEFT', (600,100), cv2.FONT_HERSHEY_SIMPLEX, 3, (255,0,0), 5)
                         left_state = False
@@ -60,9 +61,9 @@ while cap.isOpened():
             if hand_lr.classification[0].label == 'Right':
                 hand_z = np.abs(np.round(hand_landmarks.landmark[mp_hands.HandLandmark.MIDDLE_FINGER_MCP].z, 5)*1000)
                 cv2.putText(img, str(hand_z), (1080,100), cv2.FONT_HERSHEY_SIMPLEX, 1, (0,255,0), 2)
-                if hand_z > 100:
+                if hand_z > 110:
                     right_state = True
-                elif hand_z < 50:
+                elif hand_z < 40:
                     if right_state == True:
                         cv2.putText(img, 'RIGHT', (600,100), cv2.FONT_HERSHEY_SIMPLEX, 3, (255,0,0), 5)
                         right_state = False
